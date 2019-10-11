@@ -3,7 +3,7 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// create an array of objects, each with 4-5 different properties
+// create an array of objects, each with 3-5 different properties
 const quotes = [{
     quote: 'Nobody exists on purpose. Nobody belongs anywhere. We\'re all going to die. Come watch TV.',
     source: 'Morty',
