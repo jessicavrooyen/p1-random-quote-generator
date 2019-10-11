@@ -45,6 +45,16 @@ function getRandomQuote() {
   return quotes[randomQuote];
 }
 
+// generate a random color by creating random RGB values & assign it to the document's body
+function getRandomColor() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  let rgb = 'rgb(' + r + ',' + g + ',' + b + ')';
+
+  document.body.style.background = rgb;
+}
+
 // create a function that holds the randomly generated quote and the variable to display the quotes' content
 function printQuote() {
   let quote = getRandomQuote();
@@ -60,8 +70,15 @@ function printQuote() {
     htmlString += '<span class="year">' + quote.year + '</span>';
   }
   htmlString += '</p>';
+  htmlString += '<p class="tags">' + quote.tags + '</p>';
   document.getElementById('quote-box').innerHTML = htmlString;
+
+  return getRandomColor();
 }
 
 // event listener that calls the printQuote function when clicked
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+
+
+// set a delay on the page, after a certain amount of time has passed, display a new quote
+window.setInterval(printQuote, 5000);
