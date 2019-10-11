@@ -3,54 +3,65 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
+// create an array of objects, each with 4-5 different properties
+const quotes = [{
+    quote: 'Nobody exists on purpose. Nobody belongs anywhere. We\'re all going to die. Come watch TV.',
+    source: 'Morty',
+    citation: 'Rixty Minutes',
+    year: 2014,
+    tags: ['alternate', 'realities']
+  },
+  {
+    quote: 'Weddings are basically funerals with cake.',
+    source: 'Rick',
+    citation: 'The Weddings Squanchers',
+    tags: ['true', 'dat']
+  },
+  {
+    quote: 'Because I don\'t respect therapy; because I\'m a scientist; because I invent, transform, create, and destroy for a living, and when I don\'t like something about the world, I change it.',
+    source: 'Rick',
+    citation: 'Pickle Rick',
+    year: 2017,
+    tags: ['life', 'advice']
+  },
+  {
+    quote: 'What, so everyone\'s supposed to sleep every single night now. You realize that nighttime makes up half of all time?',
+    source: 'Rick',
+    citation: 'Auto Erotic Assimilation',
+    year: 2015,
+    tags: ['sleep', 'less', 'do', 'more']
+  },
+  {
+    quote: 'Listen Morty, I hate to break it to you, but what people calls \'love\' is just a chemical reaction that compels animals to breed. It hits hard, Morty, then it slowly fades, leaving you stranded in a failing marriage. I did it. Your parents are gonna do it. Break the cycle, Morty. Rise above. Focus on science.',
+    source: 'Rick',
+    year: 2014,
+    tags: ['science is love', 'science is life']
+  }
+];
 
+// a random number is generated depending on the amount of quotes that we have
+function getRandomQuote() {
+  let randomQuote = Math.floor(Math.random() * quotes.length);
+  return quotes[randomQuote];
+}
 
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-  Add the `citation` property to at least one object in the array.
-  Add the `year` property to at least one object in the array.
-  Use console.log() to log your array of quotes to the console.
-***/
+// create a function that holds the randomly generated quote and the variable to display the quotes' content
+function printQuote() {
+  let quote = getRandomQuote();
+  let htmlString = '';
+  //build html message
+  htmlString = '<p class="quote">' + quote.quote + '</p>';
+  htmlString += '<p class="source">' + quote.source;
+  // check if citation and year are present in quote properties
+  if (quote.citation !== undefined) {
+    htmlString += '<span class="citation">' + quote.citation + '</span>';
+  }
+  if (quote.year !== undefined) {
+    htmlString += '<span class="year">' + quote.year + '</span>';
+  }
+  htmlString += '</p>';
+  document.getElementById('quote-box').innerHTML = htmlString;
+}
 
-
-
-
-/***
-  Create the `getRandomQuote` function to:
-   - Create a variable to store a random number 
-   - Cse the random number to `return` a random quote object from the `quotes` array.
-***/
-
-
-
-
-/***
-  Create the `printQuote` function to: 
-   - Call the `getRandomQuote` function and assign it to a variable.
-   - Create a variable for the HTML string and set it equal to an empty string.
-   - Use the HTML template in the instructions or the markup in the index.html file, AND 
-     the random quote vairable to build your HTML string.
-   - Add the quote and source section to the HTML string.
-   - Use an if statement to check for the citation property before adding it to the HTML string.
-   - Use an if statement to check for the year property before adding it to the HTML string.
-   - Don't forget to close that final `p` tag.
-   - Set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
-
-
-
-
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
-
+// event listener that calls the printQuote function when clicked
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
