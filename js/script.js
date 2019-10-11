@@ -50,6 +50,7 @@ function getRandomQuote() {
 }
 
 // generate a random color by creating random RGB values & assign it to the document's body
+// code snippet used from stack overflow. Source: https://stackoverflow.com/questions/51628092/random-rgb-color-generator-with-javascript
 function getRandomColor() {
   let r = Math.floor(Math.random() * 256);
   let g = Math.floor(Math.random() * 256);
