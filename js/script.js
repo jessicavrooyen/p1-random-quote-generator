@@ -28,14 +28,18 @@ const quotes = [{
     quote: 'What, so everyone\'s supposed to sleep every single night now. You realize that nighttime makes up half of all time?',
     source: 'Rick',
     citation: 'Auto Erotic Assimilation',
-    year: 2015,
-    tags: ['sleep', 'less', 'do', 'more']
+    year: 2015
   },
   {
-    quote: 'Listen Morty, I hate to break it to you, but what people calls \'love\' is just a chemical reaction that compels animals to breed. It hits hard, Morty, then it slowly fades, leaving you stranded in a failing marriage. I did it. Your parents are gonna do it. Break the cycle, Morty. Rise above. Focus on science.',
-    source: 'Rick',
+    quote: 'Listen Morty, I hate to break it to you, but what people call \'love\' is just a chemical reaction that compels animals to breed. It hits hard, Morty, then it slowly fades, leaving you stranded in a failing marriage. I did it. Your parents are gonna do it. Break the cycle, Morty. Rise above. Focus on science.',
+    source: 'Rick Potion #9',
     year: 2014,
     tags: ['science is love', 'science is life']
+  },
+  {
+    quote: 'Having a family doesn\'t mean that you stop being an individual. You know the best thing you can do for the people that depend on you? Be honest with them, even if it means setting them free.',
+    source: 'Mr. Meeseeks',
+    citation: 'Meeseeks and Destroy',
   }
 ];
 
@@ -58,22 +62,24 @@ function getRandomColor() {
 // create a function that holds the randomly generated quote and the variable to display the quotes' content
 function printQuote() {
   let quote = getRandomQuote();
+  getRandomColor();
   let htmlString = '';
+
   //build html message
   htmlString = '<p class="quote">' + quote.quote + '</p>';
   htmlString += '<p class="source">' + quote.source;
   // check if citation and year are present in quote properties
-  if (quote.citation !== undefined) {
+  if (quote.citation) {
     htmlString += '<span class="citation">' + quote.citation + '</span>';
   }
-  if (quote.year !== undefined) {
+  if (quote.year) {
     htmlString += '<span class="year">' + quote.year + '</span>';
   }
   htmlString += '</p>';
-  htmlString += '<p class="tags">' + quote.tags + '</p>';
+  if (quote.tags) {
+    htmlString += '<span class="tags">' + quote.tags + '</span>';
+  }
   document.getElementById('quote-box').innerHTML = htmlString;
-
-  return getRandomColor();
 }
 
 // event listener that calls the printQuote function when clicked
